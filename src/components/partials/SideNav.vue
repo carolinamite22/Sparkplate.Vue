@@ -3,6 +3,14 @@
     :class="menuType"
     class="flex flex-col items-stretch bg-white shadow-md border-r border-gray-300"
   >
+    <!-- Start: New tab (QR Code) added in the sidebar to show QR Code generator -->
+    <router-link v-ripple to="/qr">
+      <span class="icon">
+        <qr-icon :color="pathColor('qr')" />
+      </span>
+      <span class="link-text">Settings</span>
+    </router-link>
+    <!-- End -->
     <router-link v-ripple to="/directories">
       <span class="icon">
         <files-icon :color="pathColor('directories')" />
@@ -30,13 +38,15 @@ import { mapGetters } from 'vuex'
 import FilesIcon from '../icons/Files.vue'
 import SettingsIcon from '../icons/Settings.vue'
 import WalletIcon from '../icons/Wallet.vue'
+import QrIcon from '../icons/Qr.vue'
 
 export default {
   name: 'SideNav',
   components: {
     FilesIcon,
     SettingsIcon,
-    WalletIcon
+    WalletIcon,
+    QrIcon
   },
   computed: {
     ...mapGetters(['menuType'])
